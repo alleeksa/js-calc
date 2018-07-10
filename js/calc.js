@@ -1,34 +1,46 @@
 document.querySelectorAll('.number')
-   .forEach(el => el.addEventListener('click' ,clickNumber));
+    .forEach(el => el.addEventListener('click', clickNumber));
 document.querySelectorAll('.operation')
-   .forEach(el => el.addEventListener('click' ,operation));
-   
-document.querySelector('.calc').addEventListener('click' ,calc );
+    .forEach(el => el.addEventListener('click', operation));
 
-
-
-
-const display = document.querySelector ('.display');
-
-
-
+document.querySelector('.calc').addEventListener('click', calc);
 document.querySelector('.clear').addEventListener('click', clear);
+document.querySelector('.fraction').addEventListener('click', fraction);
+document.querySelector('.sqrt').addEventListener('click', sqrt);
+document.querySelector('.percent').addEventListener('click', percent);
 
-function clickNumber (event) {
+
+const display = document.querySelector('.display');
+
+function sqrt() {
+    const x = display.value;
+    display.value = Math.sqrt(x);
+}
+
+function fraction() {
+    const x = display.value;
+    display.value = 1 / x;
+}
+
+function percent() {
+    display.value += '%';
+}
+
+function clickNumber(event) {
     display.value += event.target.innerText;
 }
 
-function operation (event) {
+function operation(event) {
     display.value += event.target.innerText;
 }
 
 
 
- function clear() {
+function clear() {
     display.value = ' ';
-} 
+}
 
- 
-function calc () {
-    display.value = eval (display.value);
+
+function calc() {
+    display.value = eval(display.value);
 }
